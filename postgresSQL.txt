@@ -1,0 +1,47 @@
+psql ke commands generally \ se start hote hain.
+
+
+PostgreSQL Version - SELECT version();
+List of Database - \l
+Tables - \dt
+psql se bahar - \q
+Current Database - SELECT current_database();
+Current user - SELECT current_user;
+
+FastAPI project mein PostgresSQL connection URL generally:
+
+url = "postgresql+psycopg://postgres:admin123@localhost:5432/mydatabase"
+engine = create_engine(DATABASE_URL)
+
+# pip install psycopg[binary] sqlalchemy
+
+# Docker 
+
+docker pull postgres:18
+
+docker run --name postgres-db -e POSTGRES_USER=rahulsingh -e POSTGRES_PASSWORD=rahul@123 -e POSTGRES_DB=rhxdatabase -p 5432:5432 -d       postgres:18
+
+docker exec -it postgres-db psql -U rahulsingh -d rhxdatabase
+
+
+Database create karna -  CREATE DATABASE rahul_db;
+Dusare Database par switch karne k liye - \c {Databasename}
+
+check postgresql schema - \dn  
+
+create Tables -
+ CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    age INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+Table ka Structure -  \d {Tablename}
+
+Data Dekhne k liye - SELECT * FROM users;
+
+Data Insert - 
+INSERT INTO users (name, email, age)
+VALUES ('Vaibhav', 'vaibhav@gmail.com', 22);
